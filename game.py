@@ -651,7 +651,9 @@ class KnightKnaveGame:
                 )
 
             self.play_sound("ok")
-            self.show_confetti()
+
+            # Extra Victory popup removed.
+            # The existing correct-answer message is retained.
 
             messagebox.showinfo(
                 "Correct! ✨",
@@ -826,31 +828,6 @@ class KnightKnaveGame:
             return
 
         self.root.after(900, lambda: None)
-
-    def show_confetti(self):
-        # Small native Tkinter victory popup.
-        popup = tk.Toplevel(self.root)
-        popup.title("Victory!")
-        popup.configure(bg=BG)
-        popup.geometry("380x150")
-        popup.transient(self.root)
-
-        self.label(
-            popup, "✦  ✧  ✨  ✧  ✦",
-            24, GOLD, True
-        ).pack(pady=(18, 6))
-
-        self.label(
-            popup, "Logic triumphs!",
-            15, GREEN, True
-        ).pack()
-
-        self.label(
-            popup, "Your quest continues...",
-            10, MUTED
-        ).pack(pady=6)
-
-        popup.after(900, popup.destroy)
 
 
 if __name__ == "__main__":
